@@ -1,85 +1,25 @@
 <template>
   <div>
-    <header>
-      <nav>
-        <h1>AVENUE<span>.</span></h1>
-        <div class="nav-right">
-          <a href="#">Home</a>
-          <div class="dropdown">
-            <a class="dropbtn">Collection</a>
-            <div class="dropdown-content">
-              <a href="detail.html">Sneaker</a>
-              <a href="detail.html">Slip On</a>
-              <a href="detail.html">Boots</a>
-              <a href="detail.html">Pantofel</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <a class="dropbtn">Brands</a>
-            <div class="dropdown-content">
-              <a href="detail.html">Adidas</a>
-              <a href="detail.html">Nike</a>
-              <a href="detail.html">Convers</a>
-            </div>
-          </div>
-          <a href="#">Sale</a>
-          <button @click="cartDisplay = 'flex'" class="btn-login">
-            Cart ({{ totalQty }})
-          </button>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div class="container-card">
-        <div class="card" v-for="item in clothes">
-          <div class="img-card">
-            <img :src="item.img" alt="" />
-            <button @click="changeDetails(item.id)">Details</button>
-          </div>
-          <h3>{{ item.name }}</h3>
-          <h3>{{ item.priceThrough }}</h3>
-          <h3>Rp. {{ convertIDR(item.price) }},-</h3>
-          <!-- <h3>Rp. {{ item.price }},-</h3> -->
+    <main class="container bg-white mx-auto px-6 py-4 sm:flex sm:flex-wrap sm:gap-6 sm:justify-center">
 
-        </div>
+      <div v-for="item in clothes">
+        <a href="#" class="block group mb-5 sm:w-64 md:w-80 lg:w-64">
+          <img :src="item.img" :alt="item.name" class="object-cover w-full rounded aspect-square" />
+
+          <div class="mt-3">
+            <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
+              {{ item.name }}
+            </h3>
+
+            <div class="flex justify-start gap-5">
+              <p class="mt-1 text-sm text-gray-700">Rp. {{ formatIDR(item.price) }}</p>
+              <p class="mt-1 text-sm text-red-600 line-through">{{ item.priceThrough }}</p>
+            </div>
+          </div>
+        </a>
       </div>
     </main>
-    <footer>
-      <div class="flex-footer">
-        <ul class="section-footer">
-          <li>Hatarika</li>
-          <li>Hatarika</li>
-          <li>Ji. Sudirman No.xx</li>
-          <li>hatarika@mail.com</li>
-          <li>(021) 2552-xxxx</li>
-        </ul>
 
-        <ul class="section-footer">
-          <li>atarika Collectio</li>
-          <li><a href="detail.html">Sneaker</a></li>
-          <li><a href="detail.html">Slip On</a></li>
-          <li><a href="detail.html">Boots</a></li>
-          <li><a href="detail.html">Pantofel</a></li>
-        </ul>
-
-        <ul class="section-footer sosmed">
-          <li>Follow us on</li>
-          <li>
-            <a href="#"><img src="sosmed/twitter.png" alt="twitter" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="sosmed/facebook.png" alt="facebook" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="sosmed/instagram.png" alt="instagram" /></a>
-          </li>
-          <li>
-            <a href="#"><img src="sosmed/pinterest.png" alt="pinterest" /></a>
-          </li>
-        </ul>
-      </div>
-      <p>Copyright © 2021 Hatarika. All Rights Reserved.</p>
-    </footer>
   </div>
 </template>
 
@@ -92,6 +32,9 @@ export default {
         .toString()
         .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
     },
+    formatIDR(price) {
+      return this.$helper.convertIDR(price)
+    },
   },
   data() {
     return {
@@ -99,33 +42,36 @@ export default {
         {
           name: "Navy Jacket",
           priceThrough: "Rp. 900.000,-",
-          price: "500000",
+          price: 500000,
           img: "https://img.freepik.com/free-photo/man-navy-jacket-jeans-streetwear_53876-108579.jpg?w=740&t=st=1675616674~exp=1675617274~hmac=dc5012b5c510f094c322b1cfe9c032b5fb68bcd50cb383f383995eb244fa296d",
           id: 1,
         },
         {
           name: "Denim Jacket",
           priceThrough: "Rp. 1.200.000,-",
-          price: "1000000",
+          price: 1000000,
           img: "https://img.freepik.com/free-photo/attractive-smiling-happy-woman-making-selfie-photo-isolated-white-studio-wall-dressed-jeans-denim-shirt-wearing-yellow-sunglasses-hipster-style-outfit_231208-1679.jpg?w=740&t=st=1675616919~exp=1675617519~hmac=e71d1695723603b9b554b0fd2ff27733d291b3c20af3ca7e1be847825a63605b",
           id: 2,
         },
         {
           name: "Black Shirt",
           priceThrough: "Rp. 200.000,-",
-          price: "150000",
+          price: 150000,
           img: "https://img.freepik.com/free-photo/portait-young-handsome-man_1303-9709.jpg?w=740&t=st=1675617022~exp=1675617622~hmac=b7c4f706c71bd460a742966c1546c942577e10066fa1a2202e2572c627b21874",
           id: 3,
         },
         {
           name: "Blazer",
           priceThrough: "Rp. 5.000.000,-",
-          price: "2000000",
+          price: 2000000,
           img: "https://img.freepik.com/free-photo/medium-shot-woman-wearing-blazer_23-2148365040.jpg?w=740&t=st=1675617107~exp=1675617707~hmac=f612d05cd01f1b25512657470022f5eb875f7fb9658173d3bb7288abceee36ef",
           id: 4,
         },
       ]
     }
+  },
+  computed: {
+
   },
 }
 </script>
