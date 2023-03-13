@@ -14,17 +14,18 @@
 
         <nav aria-label="Footer Nav" class="mt-12">
           <ul class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-16">
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
-                About
-              </a>
-            </li>
+
 
             <li v-for="item in categorys" @click="filterProducts(item)">
               <nuxt-link tag="a" to="/filter" class="text-gray-700 transition capitalize hover:text-gray-700/75 ">{{ item
               }}</nuxt-link>
             </li>
 
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
+                About
+              </a>
+            </li>
 
             <li>
               <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
