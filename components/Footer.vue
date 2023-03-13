@@ -20,11 +20,11 @@
               </a>
             </li>
 
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
-                Products
-              </a>
+            <li v-for="item in categorys" @click="filterProducts(item)">
+              <nuxt-link tag="a" to="/filter" class="text-gray-700 transition capitalize hover:text-gray-700/75 ">{{ item
+              }}</nuxt-link>
             </li>
+
 
             <li>
               <a class="text-gray-700 transition hover:text-gray-700/75" href="/">
@@ -85,62 +85,17 @@
 </template>
 <script>
 export default {
-
+  methods: {
+    filterProducts(fill) {
+      this.$store.commit('changeCategory', fill)
+      console.log(fill);
+    }
+  },
+  computed: {
+    categorys() {
+      return this.$store.state.categorys
+    }
+  }
 }
 </script>
-<style>
-footer {
-  padding: 20px 50px;
-  color: white;
-  /*background: #3a3d46 url(../images/pattern-shoes.png) repeat-y left;*/
-  background-size: 80px;
-}
-
-ul>li {
-  margin-top: 15px;
-}
-
-ul>li>a {
-  text-decoration: none;
-  color: white;
-}
-
-footer>p {
-  text-align: center;
-  color: darkgray;
-  margin-top: 20px;
-}
-
-footer>h3 {
-  margin: 30px 0;
-}
-
-.flex-footer {
-  display: flex;
-}
-
-.section-footer {
-  flex: 1;
-  list-style-type: none;
-}
-
-.section-footer li a img {
-  width: 32px;
-}
-
-.section-footer li,
-.section-footer li a {
-  color: #060606;
-}
-
-.section-footer li:first-child {
-  color: #d65a31;
-  margin: 20px 0;
-}
-
-
-.sosmed li:nth-child(1n + 2) {
-  display: inline;
-  margin-left: 10px;
-}
-</style>
+<style></style>
