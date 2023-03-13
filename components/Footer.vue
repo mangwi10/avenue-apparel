@@ -7,8 +7,8 @@
             <h1 class="text-white font-bold text-3xl">AVENUE <span class="text-red-600">.</span></h1>
           </a>
           <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-            consequuntur amet culpa cum itaque neque.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex eveniet rem porro voluptatum minus cupiditate
+            fugit asperiores esse modi velit.
           </p>
         </div>
 
