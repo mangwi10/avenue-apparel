@@ -64,6 +64,9 @@ export default {
         },
       },
     },
+    extend(config) {
+      config.resolve.alias["node-fetch-native"] = require.resolve("node-fetch");
+    },
   },
   generate: { fallback: "404.html" },
 };
